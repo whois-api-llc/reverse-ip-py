@@ -1,3 +1,15 @@
+.. image:: https://img.shields.io/badge/License-MIT-green.svg
+    :alt: reverse-ip-py license
+    :target: https://opensource.org/licenses/MIT
+
+.. image:: https://img.shields.io/pypi/v/reverse-ip.svg
+    :alt: reverse-ip-py release
+    :target: https://pypi.org/project/reverse-ip
+
+.. image:: https://github.com/whois-api-llc/reverse-ip-py/workflows/Build/badge.svg
+    :alt: reverse-ip-py build
+    :target: https://github.com/whois-api-llc/reverse-ip-py/actions
+
 ========
 Overview
 ========
