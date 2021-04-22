@@ -5,7 +5,7 @@ from ipaddress import ip_address, IPv4Address
 from .net.http import ApiRequester
 from .models.response import Result
 from .exceptions.error import ParameterError, EmptyApiKeyError, \
-    UnparsableApiResponse, CannotRetrieveNextPageError
+    UnparsableApiResponseError, CannotRetrieveNextPageError
 
 
 class Client:
@@ -80,7 +80,7 @@ class Client:
           - ApiAuthError -- Server returned 401, 402 or 403 HTTP code
           - BadRequestError - Server returned 400 or 422 HTTP code
           - HttpApiError -- HTTP code >= 300 and not equal to above codes from
-          - UnparsableApiResponse -- the response couldn't be parsed
+          - UnparsableApiResponseError -- the response couldn't be parsed
           - ParameterError -- invalid parameter's value
         - ConnectionError
         """
@@ -92,10 +92,10 @@ class Client:
             parsed = loads(str(response))
             if 'result' in parsed:
                 return Result(parsed)
-            raise UnparsableApiResponse(
+            raise UnparsableApiResponseError(
                 "Could not find the correct root element.", None)
         except JSONDecodeError as error:
-            raise UnparsableApiResponse("Could not parse API response", error)
+            raise UnparsableApiResponseError("Could not parse API response", error)
 
     def next_page(self, ip: str or IPv4Address, current_page: Result) -> Result:
         """
@@ -179,7 +179,7 @@ class Client:
 
     @staticmethod
     def _validate_domain_name(domain):
-        if domain is not None and len(str(domain)) > 4:
+        if domain is not None and len(str(domain)) > 0:
             return domain
         raise ParameterError('Invalid domain name.')
 

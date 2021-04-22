@@ -22,7 +22,7 @@ def read(*names, **kwargs):
 
 setup(
     name='reverse-ip',
-    version='1.0.1',
+    version='1.1.0',
     python_requires='>=3.6',
     license='MIT',
     description='Python client library for Reverse IP/DNS API.',
