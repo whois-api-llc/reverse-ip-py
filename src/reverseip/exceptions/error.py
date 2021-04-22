@@ -45,7 +45,7 @@ class ResponseError(ReverseIpApiError):
         self._parsed_message = pm
 
 
-class UnparsableApiResponse(ReverseIpApiError):
+class UnparsableApiResponseError(ReverseIpApiError):
     def __init__(self, message, origin_error):
         self.message = message
         self.original_error = origin_error
