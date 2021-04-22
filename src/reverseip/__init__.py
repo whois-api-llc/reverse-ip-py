@@ -6,4 +6,6 @@ __all__ = ['Client', 'ErrorMessage', 'ReverseIpApiError', 'ApiAuthError',
 from .client import Client
 from .net.http import ApiRequester
 from .models.response import ErrorMessage, Result, Record
-from .exceptions.error import *
+from .exceptions.error import ReverseIpApiError, ParameterError, \
+    EmptyApiKeyError, ResponseError, UnparsableApiResponse, ApiAuthError, \
+    BadRequestError, HttpApiError

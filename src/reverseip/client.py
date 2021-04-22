@@ -4,7 +4,8 @@ from ipaddress import ip_address, IPv4Address
 
 from .net.http import ApiRequester
 from .models.response import Result
-from .exceptions.error import *
+from .exceptions.error import ParameterError, EmptyApiKeyError, \
+    UnparsableApiResponse, CannotRetrieveNextPageError
 
 
 class Client:
@@ -70,7 +71,7 @@ class Client:
         Get parsed whois data from the API
 
         :param: ip - str|IPv4Address - the domain name
-        :param: start_from (optional) :str: Last domain names of the current page.
+        :param: start_from (optional) :str: Last domain names of the cur. page
         :return: Result
         :raises:
         - base class is reverseip.exceptions.ReverseIpApiError
@@ -78,7 +79,7 @@ class Client:
           - ResponseError -- response contains an error message
           - ApiAuthError -- Server returned 401, 402 or 403 HTTP code
           - BadRequestError - Server returned 400 or 422 HTTP code
-          - HttpApiError -- HTTP code >= 300 and doesn't equal to codes from above.
+          - HttpApiError -- HTTP code >= 300 and not equal to above codes from
           - UnparsableApiResponse -- the response couldn't be parsed
           - ParameterError -- invalid parameter's value
         - ConnectionError
@@ -130,7 +131,7 @@ class Client:
           - ResponseError -- response contains an error message
           - ApiAuthError -- Server returned 401, 402 or 403 HTTP code
           - BadRequestError - Server returned 400 or 422 HTTP code
-          - HttpApiError -- HTTP code >= 300 and doesn't equal to codes from above.
+          - HttpApiError -- HTTP code >= 300 and not equal to above codes
           - ParameterError -- invalid parameter's value
         - ConnectionError
         """

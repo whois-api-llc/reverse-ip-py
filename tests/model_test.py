@@ -1,6 +1,6 @@
 import unittest
 from json import loads
-from reverseip import Result, Record, ErrorMessage
+from reverseip import Result, ErrorMessage
 
 
 _json_response_ok = '''{
@@ -36,7 +36,7 @@ _json_response_ok = '''{
 }'''
 
 _json_response_error = '''{
-    "code": 403, 
+    "code": 403,
     "messages": "Access restricted. Check credits balance or enter the correct API key."
 }'''
 
